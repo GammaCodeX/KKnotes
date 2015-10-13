@@ -1,0 +1,33 @@
+<div class="well">
+  <%= form_for @note, html: { multipart: true } do |f| %>
+    <%= f.label "Titel" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label "Fil" %>
+    <%= f.file_field :data %>
+
+    <br>
+    <%= f.label "Komponist" %>
+    <%= f.text_field :composer %>
+
+    <%= f.label "Arrangør" %>
+    <%= f.text_field :arrenged_by%>
+    <br>
+
+    <%= f.label "Tekst forfatter" %>
+    <%= f.text_field :text_by %>
+    
+    <%= f.label "Udgiver" %>
+    <%= f.text_field :published_by %>
+    <br>
+
+    <%= f.label "Notater" %>
+    <%= f.text_area :notes %>
+
+    <%= f.label "Synlig for bruger" %>
+    <%= f.check_box :canview %>
+    <br>
+
+    <%= f.submit "Gem", class: "btn btn-primary" %>
+  <% end %>
+</div>

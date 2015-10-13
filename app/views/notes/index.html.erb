@@ -1,0 +1,50 @@
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<br/>
+<%if admin? %>
+  <%= link_to "Nyt nodeark", new_note_path, class:"btn btn-primary" %>
+<% end %>
+<br/><br/>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Komponist</th>
+      <th>Arrangør</th>
+      <th>Tekst forfatter</th>
+      <th>Udgiver</th>
+      <th>Sidst vist</th>
+      <th>Notater</th>
+      <th>Download link</th>
+      <% if admin? %>      
+        <th>Synlig?</th>
+        <th> </th>
+        <th> </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notes.each do |note| %>
+      <% if note.canview || admin? %>
+      <tr>
+        <td><%= note.name%></td>
+        <td><%= note.composer %></td>
+        <td><%= note.arrenged_by %></td>
+        <td><%= note.text_by %></td>
+        <td><%= note.published_by %></td>
+        <td><%= note.updated_at %></td>
+        <td><%= note.notes %></td>
+        <td><%= link_to "Download Nodeark", note.data_url %></td>
+        <% if admin? %>
+          <td> <%= note.canview ? "synlig" : "skjult" %></td>
+          <td> <%= link_to "Rediger", edit_note_path(note) %></td>
+          <td><%= button_to "Slet",  note, method: :delete, class: "btn btn-danger", confirm: "Er du sikker på at du vil slette #{note.name}?" %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

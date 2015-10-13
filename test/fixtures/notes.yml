@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  composer: MyString
+  data: MyString
+  canview: false
+
+two:
+  name: MyString
+  composer: MyString
+  data: MyString
+  canview: false
